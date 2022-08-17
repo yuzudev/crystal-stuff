@@ -6,4 +6,6 @@ currently I Have:
 * hello world
 * unix cat program
 * deno ffi proof of concept
-* image manipulation library with 2 functions or so
+* image manipulation library
+
+the image manipulation library is not fast, ideally I would use vips
