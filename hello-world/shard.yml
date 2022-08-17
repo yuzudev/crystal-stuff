@@ -1,0 +1,13 @@
+name: hello-world
+version: 0.1.0
+
+authors:
+  - Yuzu <yuzuru@programmer.net>
+
+targets:
+  hello-world:
+    main: src/hello-world.cr
+
+crystal: 1.5.0
+
+license: MIT

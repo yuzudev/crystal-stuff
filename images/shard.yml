@@ -1,0 +1,14 @@
+name: images
+version: 0.1.0
+
+authors:
+  - Yuzu <yuzuru@programmer.net>
+
+crystal: 1.5.0
+
+license: MIT
+
+dependencies:
+  stumpy_png:
+    github: stumpycr/stumpy_png
+    version: "~> 5.0"

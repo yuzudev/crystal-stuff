@@ -1,0 +1,9 @@
+*.so
+*.o
+
+docs/
+lib/
+bin/
+.shards/
+*.dwarf
+shard.lock
