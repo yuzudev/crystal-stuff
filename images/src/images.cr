@@ -15,7 +15,7 @@ module YuzuImages
   end
 
   # op is 0..1
-  def opacity(canvas : StumpyPNG::Canvas, op, full = false)
+  def opacity(canvas : StumpyPNG::Canvas, op : Float32, full = false)
     canvas.map do |colour, x, y|
       r = colour.red >> 8
       g = colour.green >> 8
@@ -27,5 +27,32 @@ module YuzuImages
       end
       StumpyPNG::RGBA.from_rgba_n(r, g, b, a, 8)
     end
+  end
+
+  def crop(canvas : StumpyPNG::Canvas, percentage : Tuple(Int32, Int32))
+    percentage_x = percentage[0]
+    percentage_y = percentage[1]
+
+    width = (canvas.width * (percentage_x / 100)).to_i32()
+    height = (canvas.height * (percentage_y / 100)).to_i32()
+
+    result = StumpyPNG::Canvas.new(width, height)
+    result.paste canvas, -width, -height
+    result
+  end
+
+  def crop(canvas : StumpyPNG::Canvas, percentage : Int32)
+    width = (canvas.width * (percentage / 100)).to_i32()
+    height = (canvas.height * (percentage / 100)).to_i32()
+
+    result = StumpyPNG::Canvas.new(width, height)
+    result.paste canvas, -width, -height
+    result
+  end
+
+  def crop(canvas : StumpyPNG::Canvas, x : Int32, y : Int32)
+    result = StumpyPNG::Canvas.new(canvas.width - x, canvas.height - y)
+    result.paste canvas, -x, -y
+    result
   end
 end
